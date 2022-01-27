@@ -1,4 +1,4 @@
-# PEC3
+# Un Juego de Plataformas
 
 En esta PEC se ha realizado un juego de plataformas con artillería.
 
@@ -12,19 +12,23 @@ Finalmente se ha utilizado el pack de assets [2D Pixel Spaceship](https://assets
 Una vez diseñado el escenario y escogido el personaje protagonista se han añadido los componentes _Rigidbody2D_ y _Colliders_, escogiendo en cada caso la forma más adecuada para el tipo de personaje u objeto, por ejemplo, tanto para el protagonista como para los enemigos se han usado dos tipos de collider, uno circular y otro rectangular, para conseguir una física más ajustada y realista. También se han añadido objetos vacíos con _Colliders_ marcados con _"IsTrigger"_ para los agujeros que harán que el personaje muera al caer.
 
 Una vez decidido el diseño se ha realizado la codificación de los Scripts, lo primero que se ha codificado ha sido el movimiento del protagonista.
-Para ello se han usado dos scripts, uno llamado **CharacterController2D** que controla los aspectos fundamentales del movimiento, por ejemplo, es el encargado de controlar si el protagonista está tocando al suelo, a un enemigo, a un trigger o al diamante final. También es el encargado de girar al personaje cuando se mueva hacia atrás y demás. En este script hay diversas variables marcadas como _"SerializeField"_, esta característica que nos permite modificar el valor de las variables con el juego en funcionamiento nos ha resultado muy útil para ajustar los parámetros de la forma más adecuada y no encontrarse con un protagonista que sale volando hasta el infinito o que resbala demasiado al moverse.
+Para ello se han usado dos scripts, uno llamado **CharacterController2D** que controla los aspectos fundamentales del protagonista, por ejemplo, es el encargado de controlar si el protagonista está tocando al suelo, a un enemigo, a un trigger o al diamante final.
+También es el encargado de girar al personaje cuando se mueva hacia atrás y demás. En este script hay diversas variables marcadas como _"SerializeField"_, esta característica que nos permite modificar el valor de las variables con el juego en funcionamiento nos ha resultado muy útil para ajustar los parámetros de la forma más adecuada y no encontrarse con un protagonista que sale volando hasta el infinito o que resbala demasiado al moverse.
 El otro script asociado al movimiento del personaje es el **PlayerMovement**, este solo controla los inputs y los elementos relacionados con la animación.
 
-También se ha programado un script para la cámara que hace que esta siga al personaje sin moverse en el eje vertical, de esta forma la cámara es más parecida a la del juego original.
+Para controlar la bala e indicar que debe herir a los enemigos y destruirse al colisionar se ha creado el script **BulletController**, y un script llamado **Extension Methods** que nos servirá para convertir un Vector3 en un Vector2.
 
-Para controlar la bala e indicar que debe herir a los enemigos y destruirse al colisionar se ha creado el script **BulletController**, y un script llamado **Extension Methods** que nos servirá para convertir un Vector3 en un Vector2. Además hemos modificado el script **Enemy** para añadir la función _Hurt_, que realizará la animación correspondiente a la muerte del enemigo y lo destruirá. También se ha añadido la función _FixedUpdate_ que hace que el enemigo gire al encontrar un obstaculo o el vacío, de manera que no desaparezcan si no los destruye el jugador.
+Además se ha creado el script **Enemy** con la función _Hurt_, que realizará la animación correspondiente a la muerte del enemigo y lo destruirá. También se ha añadido la función _FixedUpdate_ que hace que el enemigo gire al encontrar un obstaculo o el vacío, de manera que no desaparezcan si no los destruye el jugador.
 
-El script **CharacterController** también ha sido modificado para añadir la salud del jugador, es decir, los tres corazones, y la función que detectará cuando el jugador está tocando al enemigo desde encima, para así eliminarlo. Para ello se han modificado las funciones _OnCollisionEnter2D_ y _Dead_.
+También se ha programado un script para la cámara que hace que esta siga al personaje sin moverse en el eje vertical.
 
 Al jugador también se le ha añadido un sistema de partículas que se genera cada vez que este salta o cambia de dirección, para ello solo se ha tenido que definir la función _CreateDust_ y llamarla desde las funciones correspondientes.
 
-Para realizar esta PEC se han utilizado los siguientes tutoriales:
+Para realizar este proyecto se han utilizado los siguientes tutoriales:
 
+- [TILEMAPS in Unity - Brackeys](https://www.youtube.com/watch?v=ryISV_nH8qw&t=306s&ab_channel=Brackeys)
+- [2D Movement in Unity (Tutorials) - Brackeys](https://www.youtube.com/watch?v=dwcT-Dch0bA&ab_channel=Brackeys)
+- [2D Animation in Unity (Tutorials) - Brackeys](https://www.youtube.com/watch?v=hkaysu1Z-N8&ab_channel=Brackeys)
 - [Unity Platformer Tutorial - Part 4 - Enemy Movement - Devin Curry](https://www.youtube.com/watch?v=LPNSh9mwT4w&t=1254s&ab_channel=DevinCurry)
 - [Unity Platformer Tutorial - Part 5a - Combat Player Health - Devin Curry](https://www.youtube.com/watch?v=kRsBoo2p6uw&t=1120s&ab_channel=DevinCurry)
 - [Unity Platformer Tutorial Part 5b Combat Enemy Death - Devin Curry](https://www.youtube.com/watch?v=e8DXLqGPosI&t=350s&ab_channel=DevinCurry)
