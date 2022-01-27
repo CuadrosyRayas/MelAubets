@@ -44,6 +44,5 @@ public class Enemy : MonoBehaviour
         animator.SetBool("IsDead", true);
         speed = 0;
         Destroy(this.gameObject, 0.35f);
-        Score.scoreValue += 100;  
     }
 }
